@@ -5,7 +5,6 @@ CoffeeShop is a beautifully designed Flutter application that allows users to ex
 - 📱 Beautiful UI: Clean and modern design with smooth animations to enhance the user experience.
 - 🍽 Coffee Categories: Explore different coffee categories in a horizontal scroll view.
 - 🛍 Coffee Items: Browse through a vertically scrollable list of coffee items within each category.
-- 🌍 Location Selection: Easily select your preferred location to discover nearby coffee shops.
 - 🎯 State Management with Riverpod: Efficient and easy-to-use state management using Riverpod for optimal performance and maintainability.
 
 # Tech Stack
