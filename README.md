@@ -12,6 +12,9 @@ CoffeeShop is a beautifully designed Flutter application that allows users to ex
 - Riverpod: Used for state management to handle UI and data efficiently.
 
 # ScreenShots 
+![1](https://github.com/user-attachments/assets/9e397613-ae70-4d46-a44d-d623552fae2a)
+![2](https://github.com/user-attachments/assets/ae606dca-bde3-4cca-a358-ce22d1c54b06)
+![3](https://github.com/user-attachments/assets/c60d2e23-4a83-4cbd-9843-f5750e8c4802)
 
 # Installation
 - Clone the repository: git clone https://github.com/yourusername/coffeeshop.git
