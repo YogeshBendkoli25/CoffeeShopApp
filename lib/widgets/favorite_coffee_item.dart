@@ -2,8 +2,8 @@ import 'package:coffeshop/models/coffee.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CoffeeItem extends StatelessWidget {
-  const CoffeeItem({
+class FavoriteCoffeeItem extends StatelessWidget {
+  const FavoriteCoffeeItem({
     super.key,
     required this.coffee,
     required this.onSelectCoffee,
@@ -15,7 +15,7 @@ class CoffeeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
@@ -83,28 +83,6 @@ class CoffeeItem extends StatelessWidget {
                         style: GoogleFonts.sora(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                        ),
-                      ),
-
-                      // Add Button
-                      SizedBox(
-                        height: 33,
-                        width: 34,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.all(2),
-                            backgroundColor: const Color(0xFFC67C4E),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                            ),
-                          ),
-                          child: const Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
                         ),
                       ),
                     ],

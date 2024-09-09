@@ -1,6 +1,6 @@
 import 'package:coffeshop/dummy_data/coffee_cate_data.dart';
 import 'package:coffeshop/dummy_data/coffees_itemdata.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+  import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 
@@ -17,7 +17,9 @@ StateNotifierProvider<CoffeeCateProviderNotifier,List<String>>((ref) {
 });
 
 
- final coffeeProvider = StateProvider<List<String>>((ref) => availableCoffeeCategories);
-
-
  final coffeeDataProvider = Provider((ref) => avaliableCoffees);
+
+
+
+ final coffeeFilterProvider = StateProvider<String>((ref) => 'AllCoffee');
+

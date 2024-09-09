@@ -8,6 +8,7 @@ final avaliableCoffees = [
     title: 'Caffe Mocha',
     subtitile: 'Ice/Hot',
     price: '₹ 150',
+    category: Category.cappuccino
     
   ),
   Coffee(
@@ -16,6 +17,7 @@ final avaliableCoffees = [
     title: 'Flat White',
     subtitile: 'Esspresso',
     price: '₹ 200',
+    category: Category.espresso
   ),
   Coffee(
     id: 'c3',
@@ -23,6 +25,7 @@ final avaliableCoffees = [
     title: 'Mocha Fusi',
     subtitile: 'Ice/Hot',
     price: '₹ 100',
+    category: Category.americano
   ),
   Coffee(
     id: 'c4',
@@ -30,5 +33,6 @@ final avaliableCoffees = [
     title: 'Caffee Panna',
     subtitile: 'Ice/Hot',
     price: '₹ 250',
+    category: Category.latte
   ),
 ];

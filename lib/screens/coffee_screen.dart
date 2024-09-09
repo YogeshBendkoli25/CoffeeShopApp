@@ -12,10 +12,19 @@ class CoffeeScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         child: Stack(children: [
-            Image.asset('assets/images/coffecupimage.png',
-              fit: BoxFit.fill,
-              ),
+          Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+              shape: BoxShape.rectangle,
+            ),
+            child: Image.asset('assets/images/coffecupimage.png',
+            fit: BoxFit.fitWidth),
+            
+            
+            ),
+            
             
           Positioned(
             // bottom: 10,
@@ -49,6 +58,7 @@ class CoffeeScreen extends StatelessWidget {
                  const SizedBox( height: 10,
                  ),
 
+                
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFBC7F56),

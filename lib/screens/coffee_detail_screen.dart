@@ -1,6 +1,6 @@
 import 'package:coffeshop/models/coffee.dart';
-import 'package:coffeshop/provider/button_col_chnge.dart';
 import 'package:coffeshop/provider/favorite_provider.dart';
+import 'package:coffeshop/widgets/coffee_size_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,9 +24,6 @@ class CoffeeDetailScreen extends ConsumerWidget{
 
     final isFavorite = favoriteCoffee.contains(coffee);
 
-    var coffeeSize = "M";
-    final buttonColor = ref.watch(buttonColorProvider);
-  
     return Scaffold(
         appBar: AppBar(
         title : Text(coffee.title), actions: [
@@ -34,21 +31,18 @@ class CoffeeDetailScreen extends ConsumerWidget{
                 onPressed: () {
                   final wasAdded = ref.read(favoriteCoffeeProvider.notifier)
                    .toggleCoffeeFavoriteStatus(coffee);
+
+
                   ScaffoldMessenger.of(context).clearSnackBars();
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(wasAdded
                           ? 'Coffee added as favorite'
                           : 'Coffee removed.')));
                 },
-                icon: AnimatedSwitcher(
-                  duration: Duration(milliseconds: 300),
-                  child: 
-                   Image.asset('assets/images/favourite.png',
-                      key: ValueKey<bool>(isFavorite),
-                      height: 24,
-                      width: 30,
-                  ),
-                )),
+                icon: Icon(isFavorite ? Icons.favorite: Icons.favorite_border,
+                color: isFavorite ? Colors.red : Colors.grey,
+                ),
+                ),
           ],
         ),
         body: Padding(
@@ -63,7 +57,8 @@ class CoffeeDetailScreen extends ConsumerWidget{
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
-                        fit: BoxFit.fill, image: coffee.image.image),
+                        fit: BoxFit.fill, 
+                        image: coffee.image.image),
                   )),
               const SizedBox(height: 18),
               
@@ -148,57 +143,14 @@ class CoffeeDetailScreen extends ConsumerWidget{
               const SizedBox(height: 30,),
               Text('Size',style: GoogleFonts.sora(fontSize: 17,fontWeight: FontWeight.bold),),
             
+            // S , M , L Buttons
             const SizedBox(height: 20,),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                InkWell( 
-                  onTap: (){
-                    
-                  },
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: 110,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(color: coffeeSize =="S"?Colors.orange : Colors.grey.shade400)),
-                    child: const Text('S'),
-                  ),
-                ),
 
-                 InkWell(
-                  onTap: (){},
-                   child: Container(
-                    alignment: Alignment.center,
-                    width: 110,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(15),  
-                     border: Border.all(color: coffeeSize =="M"?Color.fromARGB(166, 186, 120, 21): Colors.grey.shade400)),
-                    child: const Text('M'),
-                                   ),
-                 ),
-                 InkWell(
-                  onTap: (){
-                    buttonColor == Colors.white ? Colors.orange : Colors.white;
-                  },
-                   child: Container(
-                    alignment: Alignment.center,
-                    width: 110,
-                    height: 50,
-                    decoration: BoxDecoration(
-                    //  color: Colors.white24,
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(color: Colors.grey.shade400)                  ),
-                    child: const Text('L'),
-                                   ),
-                 )
+                  // S M L buttons
+                  CoffeeSizeButton(),
               ],)
             ],
           ),

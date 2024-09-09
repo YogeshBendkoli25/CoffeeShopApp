@@ -1,11 +1,8 @@
-import 'package:coffeshop/dummy_data/coffees_itemdata.dart';
 import 'package:coffeshop/models/coffee.dart';
-import 'package:coffeshop/provider/coffee_cate_provider.dart';
 import 'package:coffeshop/provider/coffee_list_provider.dart';
-import 'package:coffeshop/screens/coffee_detail_screen.dart';
 import 'package:coffeshop/screens/favourite_coffe.dart';
-import 'package:coffeshop/widgets/coffee_griditem.dart';
-import 'package:coffeshop/widgets/coffee_item.dart';
+import 'package:coffeshop/widgets/coffee_cat_card.dart';
+import 'package:coffeshop/widgets/coffee_cat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,27 +13,21 @@ class CoffeeCategories extends ConsumerWidget {
     super.key,
   });
  
-
-  void _onSelectCoffee(BuildContext context,Coffee coffee){
-      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => CoffeeDetailScreen(coffee: coffee)));
-  }
-
-  void _selectCoffee(BuildContext context,Coffee coffee) {
-    final filteredCoffees = avaliableCoffees.where((coffee) => coffee.id.contains(coffee.id))
-    .toList();
-  }
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    // Category Scrollable
-    final coffeeCategories = ref.read(coffeeCategoryProvider);
 
-    // Coffee Grid Data
-
-    final coffees = ref.watch(coffeeListProvider);
-    final coffeeData = ref.read(coffeeDataProvider);
-
+    // Bottom navigation provider.
     var selectTab  = ref.watch(bottomNavigtionProvider);
+
+   List<Coffee> filterCoffeesByCategory(String selectedCategory, List<Coffee> coffeeData) {
+  if (selectedCategory == 'AllCoffee') {
+    return coffeeData; // Show all coffees
+  } else {
+    return coffeeData.where((c) => c.category == selectedCategory).toList();
+  }
+
+}
 
     return Scaffold(
       body: Stack(children: [
@@ -252,97 +243,20 @@ class CoffeeCategories extends ConsumerWidget {
             ),
           ],
         ),
-        Stack(
+        const Stack(
           children: [
             // Horizontal scrolling for coffee categories (AllCoffee, Espresso, etc.)
             Positioned(
               bottom: 298,
-              left: 28,
-              child: Container(
-                // padding: ,
-                margin: EdgeInsets.zero,
-                // color: Colors.green,
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                      coffeeCategories.length,
-                      (index) => Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: InkWell(
-                          
-                          
-                          onTap: () {
-                            // Add your onTap logic here
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.only(
-                            top: 4, bottom: 4, left: 10, right: 10),
-                            height: 30,
-                            color: Colors.transparent,
-                            child: Text(coffeeCategories[index],
-                            style: GoogleFonts.sora(fontSize: 16),
-                            ),
-                            
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              left: 25,
+              child: CoffeeCategoryList(),
             ),
 
             // Vertical scrolling for coffee items
             Positioned(
-              // top: 430,
               bottom: 0,
-             child: Container( // He nantr kadcha ahe Space check kryna sathi.
-              //  color: Colors.amber,
-                height: MediaQuery.of(context).size.height * 0.35, // Adjust based on available space
-                width: MediaQuery.of(context).size.width,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    children: [
-                      // Use a GridView.builder inside the Column to allow vertical scrolling
-                      GridView.builder(
-                        padding: EdgeInsets.zero,
-                        physics:
-                            const NeverScrollableScrollPhysics(), // Disable GridView scrolling to allow SingleChildScrollView to handle it
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 5,
-                          crossAxisSpacing: 5,
-                          childAspectRatio: 3 / 4,
-                        ),
-                        itemCount: coffeeData.length,
-                        itemBuilder: (context, index) {
-                          return CoffeeItem(
-                           coffee: coffees[index],
-                            onSelectCoffee: (coffee) {
-                              _onSelectCoffee(context, coffee);
-                            },
-                          );
-                        },
-
-                      ),
-
-                      for(final coffeeCat in avaliableCoffees)
-                        CoffeeGriditem(
-                          coffee: coffeeCat,
-                          onSelectCoffee: () {
-                            _selectCoffee(context, coffeeCat);
-                          })
-                    ],
-                  ),
-                ),
-              ),
+              // Coffee List
+              child: CoffeeCategoryCard(),
            ),
            
           ],
@@ -378,7 +292,7 @@ class CoffeeCategories extends ConsumerWidget {
 
                 onPressed: () {
                 ref.read(bottomNavigtionProvider.notifier).setIndex(1);
-                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => FavouriteCoffe(coffee: [],)));
+                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const  FavouriteCoffe(coffee: [],)));
                 },
               ),
 
