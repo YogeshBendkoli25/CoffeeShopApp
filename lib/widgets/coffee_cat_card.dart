@@ -1,6 +1,6 @@
 import 'package:coffeshop/models/coffee.dart';
 import 'package:coffeshop/provider/coffee_cate_provider.dart';
-import 'package:coffeshop/provider/coffee_list_provider.dart';
+import 'package:coffeshop/provider/bottom_navbtn_provider.dart';
 import 'package:coffeshop/screens/coffee_detail_screen.dart';
 import 'package:coffeshop/widgets/coffee_item.dart';
 import 'package:flutter/material.dart';

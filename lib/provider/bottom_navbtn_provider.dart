@@ -12,7 +12,7 @@ class BottomNavigationNotifier extends StateNotifier<int>{
     int selectedTab = 0;
     // void changeTab(int index){
     //   state = index;
-    // }
+    // } 
     setIndex(index){
       state=index;
     }

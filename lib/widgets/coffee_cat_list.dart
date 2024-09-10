@@ -6,10 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 class CoffeeCategoryList extends ConsumerWidget {
   const CoffeeCategoryList({super.key});
 
+ 
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Category Scrollable
     final coffeeCategories = ref.read(coffeeCategoryProvider);
+
+
 
     return Container(
       // padding: ,

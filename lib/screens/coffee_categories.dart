@@ -1,5 +1,5 @@
 import 'package:coffeshop/models/coffee.dart';
-import 'package:coffeshop/provider/coffee_list_provider.dart';
+import 'package:coffeshop/provider/bottom_navbtn_provider.dart';
 import 'package:coffeshop/screens/favourite_coffe.dart';
 import 'package:coffeshop/widgets/coffee_cat_card.dart';
 import 'package:coffeshop/widgets/coffee_cat_list.dart';
@@ -20,14 +20,6 @@ class CoffeeCategories extends ConsumerWidget {
     // Bottom navigation provider.
     var selectTab  = ref.watch(bottomNavigtionProvider);
 
-   List<Coffee> filterCoffeesByCategory(String selectedCategory, List<Coffee> coffeeData) {
-  if (selectedCategory == 'AllCoffee') {
-    return coffeeData; // Show all coffees
-  } else {
-    return coffeeData.where((c) => c.category == selectedCategory).toList();
-  }
-
-}
 
     return Scaffold(
       body: Stack(children: [
@@ -293,6 +285,7 @@ class CoffeeCategories extends ConsumerWidget {
                 onPressed: () {
                 ref.read(bottomNavigtionProvider.notifier).setIndex(1);
                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const  FavouriteCoffe(coffee: [],)));
+                ref.read(bottomNavigtionProvider.notifier).setIndex(0);
                 },
               ),
 
