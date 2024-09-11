@@ -7,16 +7,6 @@ final List<String> availableCoffeeCategories = [
   'Latte',
   'Americano',
   'Cappuccino',
-  'Esspresso',
+  'Espresso',
 ];
 
-// final List<CoffeeCategoryModel> categoryList = [
-//   Coffee('Caramel Machhiato', 'Macchiato'),
-//   Coffee('Iced Latte', 'Latte'),
-//   Coffee('Americano', 'Americano'),
-//   Coffee('Cappucino', 'Cappucino'),
-//   Coffee('Espresso', 'Espresso'),
-//   Coffee('Mocha', 'Latte'),
-//   Coffee('Latte', 'Latte'),
-
-// ];

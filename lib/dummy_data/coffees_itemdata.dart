@@ -6,33 +6,51 @@ final avaliableCoffees = [
     id: 'c1',
     image: Image.asset('assets/images/svg/CaffeMocha.png'),
     title: 'Caffe Mocha',
-    subtitile: 'Ice/Hot',
+    subtitle: 'Ice/Hot',
     price: '₹ 150',
-    category: Category.cappuccino
+    category: 'Latte'
     
   ),
   Coffee(
     id: 'c2',
     image: Image.asset('assets/images/svg/FlatWhite.png'),
     title: 'Flat White',
-    subtitile: 'Esspresso',
+    subtitle: 'Esspresso',
     price: '₹ 200',
-    category: Category.espresso
+    category: 'Espresso'
   ),
   Coffee(
     id: 'c3',
     image: Image.asset('assets/images/svg/MochaFusi.png'),
     title: 'Mocha Fusi',
-    subtitile: 'Ice/Hot',
+    subtitle: 'Ice/Hot',
     price: '₹ 100',
-    category: Category.americano
+    category: 'Americano'
   ),
   Coffee(
     id: 'c4',
     image: Image.asset('assets/images/svg/CaffePanna.png'),
     title: 'Caffee Panna',
-    subtitile: 'Ice/Hot',
+    subtitle: 'Ice/Hot',
     price: '₹ 250',
-    category: Category.latte
+    category: 'Latte'
   ),
+
+  Coffee(
+    id: 'c5', 
+    image: Image.asset('assets/images/svg/Cuppoccino.jpeg'), 
+    title: 'Cappuccino', 
+    subtitle: 'Cold/Hot', 
+    price: '₹ 180',
+    category: 'Cappuccino'
+  ),
+
+  Coffee(
+    id: 'c6', 
+    image: Image.asset('assets/images/svg/MacchiatoCoffee.jpeg'), 
+    title: 'Mac Caffee', 
+    subtitle: 'Cold/Hot', 
+    price: '₹ 180',
+    category: 'Macchiato'
+  )
 ];

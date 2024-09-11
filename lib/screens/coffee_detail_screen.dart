@@ -73,7 +73,7 @@ class CoffeeDetailScreen extends ConsumerWidget{
               Row(
                 children: [
                   Text(
-                    coffee.subtitile.toString(),
+                    coffee.subtitle.toString(),
                     style: GoogleFonts.sora(fontSize: 15, color: Colors.grey),
                   ),
 

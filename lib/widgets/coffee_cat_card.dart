@@ -1,6 +1,7 @@
 import 'package:coffeshop/models/coffee.dart';
 import 'package:coffeshop/provider/coffee_cate_provider.dart';
 import 'package:coffeshop/provider/bottom_navbtn_provider.dart';
+import 'package:coffeshop/provider/coffee_filter_cat.dart';
 import 'package:coffeshop/screens/coffee_detail_screen.dart';
 import 'package:coffeshop/widgets/coffee_item.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,12 @@ class CoffeeCategoryCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
 
-    final coffeeData = ref.read(coffeeDataProvider);
-    final coffees = ref.watch(coffeeListProvider);
+    //From one riverpod is access.
+    final selectedCategory = ref.watch(selectedCategoryProvider);
+    final allCoffees = ref.watch(coffeeListProvider);
 
+    final filteredCoffees = selectedCategory == 'All Coffee' ?
+    allCoffees : allCoffees.where((coffee) => coffee.category == selectedCategory).toList();
 
     return Card(
       shape: RoundedRectangleBorder(
@@ -51,10 +55,10 @@ class CoffeeCategoryCard extends ConsumerWidget {
                           crossAxisSpacing: 5,
                           childAspectRatio: 4 / 6,
                         ),
-                        itemCount: coffeeData.length,
+                        itemCount: filteredCoffees.length,
                         itemBuilder: (context, index) {
                           return CoffeeItem(
-                           coffee: coffees[index],
+                           coffee: filteredCoffees[index],
                             onSelectCoffee: (coffee) {
                               _onSelectCoffee(context, coffee);
                             },
@@ -72,4 +76,7 @@ class CoffeeCategoryCard extends ConsumerWidget {
       );
     
   }
+
+
 }
+

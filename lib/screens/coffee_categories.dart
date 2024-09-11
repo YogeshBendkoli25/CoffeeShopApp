@@ -1,4 +1,3 @@
-import 'package:coffeshop/models/coffee.dart';
 import 'package:coffeshop/provider/bottom_navbtn_provider.dart';
 import 'package:coffeshop/screens/favourite_coffe.dart';
 import 'package:coffeshop/widgets/coffee_cat_card.dart';

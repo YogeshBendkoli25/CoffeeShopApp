@@ -20,6 +20,5 @@ StateNotifierProvider<CoffeeCateProviderNotifier,List<String>>((ref) {
  final coffeeDataProvider = Provider((ref) => avaliableCoffees);
 
 
-
- final coffeeFilterProvider = StateProvider<String>((ref) => 'AllCoffee');
+ 
 

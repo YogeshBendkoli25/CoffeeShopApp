@@ -62,7 +62,7 @@ class FavoriteCoffeeItem extends StatelessWidget {
 
                   // Coffee Subtitle
                   Text(
-                    coffee.subtitile,
+                    coffee.subtitle,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.sora(
