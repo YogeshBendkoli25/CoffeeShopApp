@@ -39,6 +39,7 @@ dependencies:
   flutter_riverpod: ^2.5.1
   flutter_svg: ^1.1.0+1
   transparent_image: ^2.0.1
+  flutter_filter_dialog: ^1.2.0
 
 
 dev_dependencies:

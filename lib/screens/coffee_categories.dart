@@ -1,5 +1,7 @@
 import 'package:coffeshop/provider/bottom_navbtn_provider.dart';
+import 'package:coffeshop/provider/searchbox_provider.dart';
 import 'package:coffeshop/screens/favourite_coffe.dart';
+import 'package:coffeshop/widgets/coffee_cart.dart';
 import 'package:coffeshop/widgets/coffee_cat_card.dart';
 import 'package:coffeshop/widgets/coffee_cat_list.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,7 @@ class CoffeeCategories extends ConsumerWidget {
     // Bottom navigation provider.
     var selectTab  = ref.watch(bottomNavigtionProvider);
 
+    final coffeeList = ref.watch(searchTextProvider);
 
     return Scaffold(
       body: Stack(children: [
@@ -95,6 +98,10 @@ class CoffeeCategories extends ConsumerWidget {
                                     ),
                                     borderRadius: BorderRadius.circular(12.0)),
                                 child: TextField(
+                                  onTap: (){
+                                             
+                                  },
+                                  onChanged: (value) => ref.read(searchTextProvider.notifier).searchData(value),
                                   decoration: InputDecoration(
                                       prefixIcon: Padding(
                                         padding: const EdgeInsets.all(10.0),
@@ -253,6 +260,8 @@ class CoffeeCategories extends ConsumerWidget {
           ],
         )
       ]),
+    
+    
 
       ///   Bottom Navigation Bar
       bottomNavigationBar: BottomAppBar(
@@ -291,6 +300,7 @@ class CoffeeCategories extends ConsumerWidget {
               // Bag 
               IconButton(
                 onPressed: () {
+                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => CoffeeCart()));
                  ref.read(bottomNavigtionProvider.notifier).setIndex(2);
                 },
                 icon: selectTab == 2 ? Image.asset('assets/images/bagfilled.png'):
@@ -312,3 +322,5 @@ class CoffeeCategories extends ConsumerWidget {
     );
   }
 }
+
+

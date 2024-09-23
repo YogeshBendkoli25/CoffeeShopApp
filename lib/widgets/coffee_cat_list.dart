@@ -10,6 +10,7 @@ class CoffeeCategoryList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // Category Scrollable
     final selectedCategory = ref.watch(selectedCategoryProvider);
+    // categories to be checked
     final categories = ref.watch(availableCoffeeCategoriesProvider);
 
     return Container(
